@@ -8,13 +8,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private float rotationSpeed = 45f;
     [SerializeField] private Camera mainCam;
-    public Transform[] cameraLocations;
+    private int numCamLocations;
+    public GameObject camParent;
+    public Transform[] camLocations;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         mainCam = Camera.main;
+        camParent = GameObject.FindGameObjectWithTag("CameraLocations");
+        numCamLocations = camParent.transform.childCount;
+        camLocations = new Transform[numCamLocations];
     }
 
     // Update is called once per frame

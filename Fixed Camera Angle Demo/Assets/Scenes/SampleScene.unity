@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 963194228}
   m_Layer: 0
   m_Name: Camera 1
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1960,7 +1960,7 @@ GameObject:
   - component: {fileID: 1885176671}
   m_Layer: 0
   m_Name: Camera Locations
-  m_TagString: Untagged
+  m_TagString: CameraLocations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
