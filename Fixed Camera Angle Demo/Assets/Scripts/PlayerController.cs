@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
         camParent = GameObject.FindGameObjectWithTag("CameraLocations");
         numCamLocations = camParent.transform.childCount;
         camLocations = new Transform[numCamLocations];
+        for (int i = 0; i < numCamLocations; i++)
+        {
+            Debug.Log(i);
+            camLocations[i] = camParent.transform.GetChild(i);
+        }
     }
 
     // Update is called once per frame
