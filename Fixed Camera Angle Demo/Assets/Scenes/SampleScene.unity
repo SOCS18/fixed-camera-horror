@@ -1215,9 +1215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  rotationSpeed: 45
+  rotationSpeed: 50
   mainCam: {fileID: 0}
-  cameraLocations: []
+  camParent: {fileID: 0}
+  camLocations: []
 --- !u!1 &1421073116
 GameObject:
   m_ObjectHideFlags: 0
