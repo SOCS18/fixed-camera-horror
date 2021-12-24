@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] private float playerSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 45f;
+    [SerializeField] private float rotationSpeed = 50f;
     [SerializeField] private Camera mainCam;
     private int numCamLocations;
     public GameObject camParent;
