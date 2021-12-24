@@ -42,18 +42,26 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.name == "Cam1Collider")
         {
             Debug.Log("Turn on cam 1");
+            mainCam.transform.position = camLocations[0].position;
+            mainCam.transform.rotation = camLocations[0].rotation;
         }
         if (other.gameObject.name == "Cam2Collider")
         {
             Debug.Log("Turn on cam 2");
+            mainCam.transform.position = camLocations[1].position;
+            mainCam.transform.rotation = camLocations[1].rotation;
         }
         if (other.gameObject.name == "Cam3Collider")
         {
             Debug.Log("Turn on cam 3");
+            mainCam.transform.position = camLocations[2].position;
+            mainCam.transform.rotation = camLocations[2].rotation;
         }
         if (other.gameObject.name == "Cam4Collider")
         {
             Debug.Log("Turn on cam 4");
+            mainCam.transform.position = camLocations[3].position;
+            mainCam.transform.rotation = camLocations[3].rotation;
         }
     }
 }
