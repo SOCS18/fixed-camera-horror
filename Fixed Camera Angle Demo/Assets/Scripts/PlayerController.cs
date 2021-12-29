@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private bool isWalking;
     [SerializeField] private bool isTurning;
+    [SerializeField] private bool isPaused;
     [SerializeField] private GameObject gameController;
+    [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private CameraController cameraController;
     
     // Start is called before the first frame update
@@ -25,6 +27,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         cameraController = gameController.GetComponent<CameraController>();
+        inventoryPanel = GameObject.Find("Inventory");
+
+        isPaused = false;
+        inventoryPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -66,10 +72,30 @@ public class PlayerController : MonoBehaviour
 
         if (isTurning == true && isWalking == true)
             anim.SetFloat("turnSpeed", 0);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isPaused = !isPaused;
+            PauseResumeGame();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         cameraController.ChangeCamPosition(other);
+    }
+
+    void PauseResumeGame()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 0f;
+            inventoryPanel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            inventoryPanel.SetActive(false);
+        }
     }
 }
