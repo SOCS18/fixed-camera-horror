@@ -146,6 +146,7 @@ MonoBehaviour:
   isWalking: 0
   isTurning: 0
   isPaused: 0
+  isAiming: 0
   gameController: {fileID: 2125970728}
   inventoryPanel: {fileID: 0}
   cameraController: {fileID: 0}
@@ -1563,6 +1564,7 @@ MonoBehaviour:
   isWalking: 0
   isTurning: 0
   isPaused: 0
+  isAiming: 0
   gameController: {fileID: 0}
   inventoryPanel: {fileID: 0}
   cameraController: {fileID: 0}

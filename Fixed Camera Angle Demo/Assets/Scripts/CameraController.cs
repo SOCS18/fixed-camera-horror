@@ -29,7 +29,6 @@ public class CameraController : MonoBehaviour
 
     public void ChangeCamPosition(Collider other)
     {
-        Debug.Log("Called Function");
         if (other.gameObject.name == "Cam1Collider")
         {
             mainCam.transform.position = camLocations[0].position;

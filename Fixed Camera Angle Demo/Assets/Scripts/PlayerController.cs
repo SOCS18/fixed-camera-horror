@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isWalking;
     [SerializeField] private bool isTurning;
     [SerializeField] private bool isPaused;
+    [SerializeField] private bool isAiming;
     [SerializeField] private GameObject gameController;
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private CameraController cameraController;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
         isWalking = false;
         isTurning = false;
+        isAiming = false;
 
         rb = GetComponent<Rigidbody>();
 
@@ -49,8 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (isWalking == false)
             anim.SetBool("isWalking", false);
-
-        if (isWalking == true)
+        else
         {
             anim.SetBool("isWalking", true);
             anim.SetFloat("walkSpeed", Input.GetAxis("Vertical") / 4f);
@@ -63,8 +64,7 @@ public class PlayerController : MonoBehaviour
 
         if (isTurning == false)
             anim.SetBool("isTurning", false);
-
-        if (isTurning == true)
+        else
         {
             anim.SetBool("isTurning", true);
             anim.SetFloat("turnSpeed", Input.GetAxis("Horizontal"));
@@ -72,6 +72,20 @@ public class PlayerController : MonoBehaviour
 
         if (isTurning == true && isWalking == true)
             anim.SetFloat("turnSpeed", 0);
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            isAiming = true;
+        }
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            isAiming = false;
+        }
+
+        if (isAiming == false)
+            anim.SetBool("isAiming", false);
+        else
+            anim.SetBool("isAiming", true);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
