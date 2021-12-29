@@ -25,14 +25,14 @@ public class PlayerController : MonoBehaviour
         isTurning = false;
 
         rb = GetComponent<Rigidbody>();
+
         mainCam = Camera.main;
         camParent = GameObject.FindGameObjectWithTag("CameraLocations");
         numCamLocations = camParent.transform.childCount;
         camLocations = new Transform[numCamLocations];
+
         for (int i = 0; i < numCamLocations; i++)
-        {
             camLocations[i] = camParent.transform.GetChild(i);
-        }
     }
 
     // Update is called once per frame
@@ -73,9 +73,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (isTurning == true && isWalking == true)
-        {
             anim.SetFloat("turnSpeed", 0);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
