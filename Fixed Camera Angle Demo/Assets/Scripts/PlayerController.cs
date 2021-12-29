@@ -87,6 +87,9 @@ public class PlayerController : MonoBehaviour
         else
             anim.SetBool("isAiming", true);
 
+        if (Input.GetKeyDown(KeyCode.K) && isAiming)
+            Debug.Log("Bang");
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             isPaused = !isPaused;
