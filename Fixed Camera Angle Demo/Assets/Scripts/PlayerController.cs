@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isTurning;
     [SerializeField] private bool isPaused;
     [SerializeField] private bool isAiming;
+    [SerializeField] private bool isShooting;
     [SerializeField] private GameObject gameController;
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private CameraController cameraController;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         isWalking = false;
         isTurning = false;
         isAiming = false;
+        isShooting = false;
 
         rb = GetComponent<Rigidbody>();
 
@@ -88,7 +90,19 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isAiming", true);
 
         if (Input.GetKeyDown(KeyCode.K) && isAiming)
+        {
             Debug.Log("Bang");
+            isShooting = true;
+        }
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            isShooting = false;
+        }
+
+        if (isShooting == false)
+            anim.SetBool("isShooting", false);
+        else
+            anim.SetBool("isShooting", true);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
