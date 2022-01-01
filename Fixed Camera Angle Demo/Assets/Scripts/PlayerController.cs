@@ -10,12 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private bool isWalking;
     [SerializeField] private bool isTurning;
-    [SerializeField] private bool isPaused;
     [SerializeField] private bool isAiming;
     [SerializeField] private bool isShooting;
     [SerializeField] private GameObject gameController;
-    //[SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private GameObject pausePanel;
     [SerializeField] private CameraController cameraController;
     
     // Start is called before the first frame update
@@ -32,12 +29,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         cameraController = gameController.GetComponent<CameraController>();
-        //inventoryPanel = GameObject.Find("Inventory");
-        pausePanel = GameObject.Find("Pause Menu");
-
-        isPaused = false;
-        //inventoryPanel.SetActive(false);
-        pausePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -106,30 +97,10 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isShooting", false);
         else
             anim.SetBool("isShooting", true);
-
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            isPaused = !isPaused;
-            PauseResumeGame();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         cameraController.ChangeCamPosition(other);
-    }
-
-    void PauseResumeGame()
-    {
-        if (isPaused)
-        {
-            Time.timeScale = 0f;
-            pausePanel.SetActive(true);
-        }
-        else
-        {
-            Time.timeScale = 1f;
-            pausePanel.SetActive(false);
-        }
     }
 }

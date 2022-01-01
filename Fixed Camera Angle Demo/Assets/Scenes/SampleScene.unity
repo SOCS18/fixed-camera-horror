@@ -145,11 +145,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   isWalking: 0
   isTurning: 0
-  isPaused: 0
   isAiming: 0
   isShooting: 0
   gameController: {fileID: 2125970728}
-  pausePanel: {fileID: 0}
   cameraController: {fileID: 0}
 --- !u!65 &72475855
 BoxCollider:
@@ -635,7 +633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f636df07b01b9dc47a4907eb02865510, type: 3}
       propertyPath: m_Name
-      value: xbot
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f636df07b01b9dc47a4907eb02865510, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: f636df07b01b9dc47a4907eb02865510, type: 3}
       propertyPath: m_Controller
@@ -1568,11 +1570,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   isWalking: 0
   isTurning: 0
-  isPaused: 0
   isAiming: 0
   isShooting: 0
   gameController: {fileID: 0}
-  pausePanel: {fileID: 0}
   cameraController: {fileID: 0}
 --- !u!1 &1262342283
 GameObject:
@@ -1656,7 +1656,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1262342286}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2125970731}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1262342286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2854,7 +2866,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1906601544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2125970731}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1906601544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3123,6 +3147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2125970730}
   - component: {fileID: 2125970729}
+  - component: {fileID: 2125970731}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: GameController
@@ -3159,3 +3184,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125970731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125970728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c8c1a49c9579b45b060da4c98c977b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: 0
+  player: {fileID: 72475852}
+  playerController: {fileID: 0}
+  pausePanel: {fileID: 0}
