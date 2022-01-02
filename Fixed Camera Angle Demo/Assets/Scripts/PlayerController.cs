@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed = 60f;
     [SerializeField] private Animator anim;
     [SerializeField] private bool isWalking;
+    [SerializeField] private bool isRunning;
     [SerializeField] private bool isTurning;
     [SerializeField] private bool isAiming;
     [SerializeField] private bool isShooting;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         isTurning = false;
         isAiming = false;
         isShooting = false;
+        isRunning = false;
 
         rb = GetComponent<Rigidbody>();
 
@@ -40,6 +42,21 @@ public class PlayerController : MonoBehaviour
         transform.Translate(0, 0, playerSpeed * (playerMovement / 4f) * Time.deltaTime);
         transform.Rotate(0, playerRotation * rotationSpeed * Time.deltaTime, 0);
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && playerMovement >= 0)
+            isRunning = true;
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+            isRunning = false;
+
+        if (Input.GetKeyDown(KeyCode.J))
+            isAiming = true;
+        if (Input.GetKeyUp(KeyCode.J))
+            isAiming = false;
+
+        if (Input.GetKeyDown(KeyCode.K) && isAiming)
+            isShooting = true;
+        if (Input.GetKeyUp(KeyCode.K))
+            isShooting = false;
+
         if (playerMovement != 0)
             isWalking = true;
         else
@@ -51,6 +68,16 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isWalking", true);
             anim.SetFloat("walkSpeed", Input.GetAxis("Vertical") / 4f);
+        }
+
+        if (isRunning == false)
+        {
+            anim.SetBool("isRunning", false);
+        }
+        else
+        {
+            anim.SetBool("isRunning", true);
+            anim.SetFloat("walkSpeed", Input.GetAxis("Vertical") / 2f);
         }
 
         if (playerRotation != 0)
@@ -69,29 +96,10 @@ public class PlayerController : MonoBehaviour
         if (isTurning == true && isWalking == true)
             anim.SetFloat("turnSpeed", 0);
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            isAiming = true;
-        }
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-            isAiming = false;
-        }
-
         if (isAiming == false)
             anim.SetBool("isAiming", false);
         else
             anim.SetBool("isAiming", true);
-
-        if (Input.GetKeyDown(KeyCode.K) && isAiming)
-        {
-            Debug.Log("Bang");
-            isShooting = true;
-        }
-        if (Input.GetKeyUp(KeyCode.K))
-        {
-            isShooting = false;
-        }
 
         if (isShooting == false)
             anim.SetBool("isShooting", false);
