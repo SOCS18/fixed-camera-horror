@@ -62,6 +62,11 @@ public class PlayerController : MonoBehaviour
         else
             isWalking = false;
 
+        if (isAiming == false)
+            anim.SetBool("isAiming", false);
+        else
+            anim.SetBool("isAiming", true);
+
         if (isWalking == false)
             anim.SetBool("isWalking", false);
         else
@@ -95,11 +100,6 @@ public class PlayerController : MonoBehaviour
 
         if (isTurning == true && isWalking == true)
             anim.SetFloat("turnSpeed", 0);
-
-        if (isAiming == false)
-            anim.SetBool("isAiming", false);
-        else
-            anim.SetBool("isAiming", true);
 
         if (isShooting == false)
             anim.SetBool("isShooting", false);
