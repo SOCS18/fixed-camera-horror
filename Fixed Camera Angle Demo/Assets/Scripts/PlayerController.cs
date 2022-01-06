@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isShooting;
     [SerializeField] private GameObject gameController;
     [SerializeField] private CameraController cameraController;
+    [SerializeField] private GameObject pistol;
+    [SerializeField] private GunController gunController;
     
     // Start is called before the first frame update
     void Start()
@@ -25,12 +27,13 @@ public class PlayerController : MonoBehaviour
         isWalking = false;
         isTurning = false;
         isAiming = false;
-        isShooting = false;
         isRunning = false;
+        isShooting = false;
 
         rb = GetComponent<Rigidbody>();
 
         cameraController = gameController.GetComponent<CameraController>();
+        gunController = pistol.GetComponent<GunController>();
     }
 
     // Update is called once per frame
@@ -52,10 +55,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.J))
             isAiming = false;
 
-        if (Input.GetKeyDown(KeyCode.K) && isAiming)
+        if (Input.GetKeyDown(KeyCode.K) && isAiming && !anim.GetCurrentAnimatorStateInfo(0).IsName("Shoot Pistol State") && gunController.currAmmo > 0)
+        {
+            Debug.Log("Bang");
             isShooting = true;
+            gunController.currAmmo--;
+        }
         if (Input.GetKeyUp(KeyCode.K))
             isShooting = false;
+
+        if (Input.GetKeyDown(KeyCode.R) && isAiming)
+        {
+            gunController.currAmmo = gunController.maxAmmo;
+        }
 
         if (playerMovement != 0)
             isWalking = true;
@@ -98,13 +110,13 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("turnSpeed", Input.GetAxis("Horizontal"));
         }
 
-        if (isTurning == true && isWalking == true)
-            anim.SetFloat("turnSpeed", 0);
-
         if (isShooting == false)
             anim.SetBool("isShooting", false);
         else
             anim.SetBool("isShooting", true);
+
+        if (isTurning == true && isWalking == true)
+            anim.SetFloat("turnSpeed", 0);
     }
 
     private void OnTriggerEnter(Collider other)
