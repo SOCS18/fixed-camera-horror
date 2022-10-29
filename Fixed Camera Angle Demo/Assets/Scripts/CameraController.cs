@@ -49,5 +49,10 @@ public class CameraController : MonoBehaviour
             mainCam.transform.position = camLocations[3].position;
             mainCam.transform.rotation = camLocations[3].rotation;
         }
+        if (other.gameObject.name == "Cam5Collider")
+        {
+            mainCam.transform.position = camLocations[4].position;
+            mainCam.transform.rotation = camLocations[4].rotation;
+        }
     }
 }
